@@ -46,7 +46,7 @@ BuildRequires:  pandoc
 %define vcsurl git@gitlab.com:/ccmiersma/%{name}.git
 
 %description
-This package will install name based vhosts into apache's configuration. It adds directories and scripts managing webapps.
+This package will install name based vhosts into apache's configuration. It adds directories and scripts for managing webapps.
 
 %prep
 %if "%{local_source}" == "false"
