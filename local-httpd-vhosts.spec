@@ -41,7 +41,7 @@ License:	MIT
 URL:		https://gitlab.com/ccmiersma/%{name}/
 Source0:	%{name}-%{version}.tar.gz
 BuildArch:      noarch
-Requires:       httpd
+Requires:       httpd local-sw-dist
 BuildRequires:  pandoc
 
 %define vcsurl git@gitlab.com:/ccmiersma/%{name}.git
