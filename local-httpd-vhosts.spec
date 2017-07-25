@@ -16,7 +16,7 @@
 %endif
 
 Name:		local-httpd-vhosts
-Version:        0.1.0
+Version:        0.1.1
 
 Release:        1%{?local_prefix:.%local_prefix}%{?dist}
 
@@ -111,5 +111,8 @@ mandb
 mandb
 
 %changelog
+* Mon Jul 24 2017 Christopher Miersma <ccmiersma@gmail.com> 0.1.1-1.local
+- new package built with tito
+
 * Mon Mar 27 2017 Christopher Miersma - 0.1.0-1
 - Initial Release
