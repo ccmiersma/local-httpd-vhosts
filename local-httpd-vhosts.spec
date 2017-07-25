@@ -16,9 +16,9 @@
 %endif
 
 Name:		local-httpd-vhosts
-Version:        0.1.1
+Version:        0.1.2
 
-Release:        2.local
+Release:        1%{?local_prefix:.%local_prefix}%{?dist}
 
 Summary:	Local Apache httpd name based vhosts
 Group:		local
@@ -113,6 +113,9 @@ mandb
 mandb
 
 %changelog
+* Mon Jul 24 2017 Christopher Miersma <ccmiersma@gmail.com> 0.1.2-1.local
+- 
+
 * Mon Jul 24 2017 Christopher Miersma <ccmiersma@gmail.com> 0.1.1-2.local
 - new package built with tito
 
