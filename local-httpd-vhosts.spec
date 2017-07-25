@@ -52,16 +52,17 @@ fi
 
 %install
 
-mkdir -p ${RPM_BUILD_ROOT}%_prefix
-mkdir -p ${RPM_BUILD_ROOT}%_datadir
-mkdir -p ${RPM_BUILD_ROOT}%_mandir
-mkdir -p ${RPM_BUILD_ROOT}%_bindir
-mkdir -p ${RPM_BUILD_ROOT}%_sbindir
+mkdir -p %buildroot%_prefix
+mkdir -p %buildroot%_datadir
+mkdir -p %buildroot%_docdir
+mkdir -p %buildroot%_mandir
+mkdir -p %buildroot%_bindir
+mkdir -p %buildroot%_sbindir
 mkdir -p ${RPM_BUILD_ROOT}%_libdir/scripts
 mkdir -p ${RPM_BUILD_ROOT}%_libexecdir 
 mkdir -p ${RPM_BUILD_ROOT}%_includedir 
-mkdir -p ${RPM_BUILD_ROOT}%_sysconfdir/httpd/conf.d/local-vhosts.d
-mkdir -p ${RPM_BUILD_ROOT}%_sysconfdir/httpd/conf.d/local-webapps.d
+mkdir -p ${RPM_BUILD_ROOT}/etc/httpd/conf.d/local-vhosts.d
+mkdir -p ${RPM_BUILD_ROOT}/etc/httpd/conf.d/local-webapps.d
 mkdir -p ${RPM_BUILD_ROOT}/var/www/local-vhosts.d
 mkdir -p ${RPM_BUILD_ROOT}/var/www/local-webapps.d
 
@@ -69,7 +70,7 @@ mkdir -p ${RPM_BUILD_ROOT}%_mandir/man7
 
 
 #Pre-config file in sysconfig.
-cp local-vhosts.conf ${RPM_BUILD_ROOT}%_sysconfdir/httpd/conf.d/
+cp local-vhosts.conf ${RPM_BUILD_ROOT}/etc/httpd/conf.d/
 
 
 cp %{name}.7.gz ${RPM_BUILD_ROOT}%_mandir/man7/
@@ -80,12 +81,13 @@ cp README.md %buildroot%_docdir/
 #This will end up in the files section.
 cat > %{name}-defined-files-list << EOF
 %defattr(-,root,root, -)
-%dir %_sysconfdir/httpd/conf.d/local-vhosts.d
-%dir %_sysconfdir/httpd/conf.d/local-webapps.d
+%dir /etc/httpd/conf.d/local-vhosts.d
+%dir /etc/httpd/conf.d/local-webapps.d
 %dir /var/www/local-vhosts.d
 %dir /var/www/local-webapps.d
-%config %_sysconfdir/httpd/conf.d/local-vhosts.conf
-%docdir %{_mandir} 
+%config /etc/httpd/conf.d/local-vhosts.conf
+%docdir %{_mandir}
+%docdir %{_docdir}
 EOF
 
 #Convoluted stuff to combine the manual list above with any new files we find, into a correct list with no duplicates
